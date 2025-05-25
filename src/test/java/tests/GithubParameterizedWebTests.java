@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -22,11 +23,15 @@ import static com.codeborne.selenide.Selenide.*;
 @DisplayName("Параметарезированные веб тесты")
 public class GithubParameterizedWebTests {
 
-    @BeforeEach
-    void setupEnvironment() {
+    @BeforeAll
+  static void setupEnvironment() {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
         Configuration.browser = "chrome";
+    }
+
+        @BeforeEach
+        void pageSetup(){
         open("https://github.com/");
     }
 
